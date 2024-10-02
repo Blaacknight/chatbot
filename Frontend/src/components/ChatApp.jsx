@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
-import apiService from '../service/api.service';
+import apiService from '../service/api.service'; // Ensure this service is correctly set up
 
 const ChatApp = ({ model }) => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const [modelMessage, setModel] = useState("");  // Model name state
+  const [modelMessage, setModelMessage] = useState("");  // State to hold the model name
   const messageEndRef = useRef(null);
 
   const handleSendMessage = () => {
     if (inputValue.trim() === '' && !selectedFile) return;
 
+    // Add user message to state
     setMessages((prevMessages) => [
       ...prevMessages,
       {
@@ -21,11 +22,13 @@ const ChatApp = ({ model }) => {
     ]);
 
     const inputDetails = {
-      "user_input": inputValue,
+      user_input: inputValue,
+      model: model, // Pass the model to the backend if required
     };
 
+    // Update the API call to use the backend URL
     apiService.postInputData(inputDetails).then((data) => {
-      setModel(data.data.model);  // Set the model name
+      setModelMessage(data.data.model);  // Set the model name
       setMessages((prevMessages) => [
         ...prevMessages,
         {
@@ -34,6 +37,9 @@ const ChatApp = ({ model }) => {
           file: null,
         },
       ]);
+    }).catch(error => {
+      console.error("Error sending message:", error);
+      // Handle error (e.g., notify the user)
     });
 
     setInputValue('');
