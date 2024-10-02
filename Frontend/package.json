@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^17.0.2",               // Update the version as necessary
-    "react-dom": "^17.0.2",           // Update the version as necessary
-    "react-scripts": "4.0.3",          // Update the version as necessary
-    "serve": "^14.0.1"                 // Added serve package
-    // Add any other dependencies your project requires
+    "react": "^17.0.2",               
+    "react-dom": "^17.0.2",           
+    "react-scripts": "4.0.3",          
+    "serve": "^14.0.1"                 
+    
   },
   "scripts": {
-    "start": "serve -s build",         // Start script to serve the build
-    "build": "react-scripts build",    // Build script
-    "test": "react-scripts test",      // Test script
-    "eject": "react-scripts eject"     // Eject script
+    "start": "serve -s build",         
+    "build": "react-scripts build",    
+    "test": "react-scripts test",      
+    "eject": "react-scripts eject"    
   },
   "eslintConfig": {
     "extends": [
