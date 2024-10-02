@@ -63,6 +63,11 @@ def chat():
             feynman_score = 0  # Reset score for next model
 
     return jsonify({"response": ai_response})
+    
+# Define root route
+@app.route('/')
+def index():
+    return "Welcome to the WeCode AI Learning Assistant API! Use /api/get_user_input to interact."
 
 # Start the server
 if __name__ == '__main__':
